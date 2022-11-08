@@ -10,11 +10,11 @@ A repository with tutorials on different systems in unity
 - Etc
 
 
-## Basic Dialogue System
+## [Basic Dialogue System](Tutorials/BasicDialogueSystem.md)
 - Enter a area and dialogue is show for that character.
 
-## Inventory System
+## [Inventory System](Tutorials/InventorySystem.md)
 - ADd and remove items, and move them around inside the inventory.
 
-## Player Controller
+## [Player Controller](Tutorials/PlayerController.md)
 - A player controller that is able to deal with the Custom Gravity system.
