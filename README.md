@@ -1,7 +1,7 @@
 # UnityTutorials
 A repository with tutorials on different systems in unity
 
-## [Custom Gravity (/Custom Gravity.md)]
+## [Custom Gravity] (/Custom Gravity.md)
 - Different gravity in different areas
 - Side ways
 - Cube
