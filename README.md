@@ -13,8 +13,8 @@ A repository with tutorials on different systems in unity
 ## [Basic Dialogue System](Tutorials/BasicDialogueSystem.md)
 - Enter a area and dialogue is show for that character.
 
-## [Inventory System](Tutorials/InventorySystem.md)
-- ADd and remove items, and move them around inside the inventory.
+## [Custom Editor](Tutorials/InventorySystem.md)
+- Custom editors for your scripts
 
 ## [Player Controller](Tutorials/PlayerController.md)
-- A player controller that is able to deal with the Custom Gravity system.
+- A simple player controller that uses the RigidBody component to move.
