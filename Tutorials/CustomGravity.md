@@ -28,7 +28,10 @@ public Vector3 GravityDirection
 {
 	get
 	{
-		if (_gravityAreas.Count == 0) return Vector3.zero;
+		if (_gravityAreas.Count == 0) 
+		{
+			return Vector3.zero;
+		}
 		_gravityAreas.Sort((area1, area2) => area1.Priority.CompareTo(area2.Priority));
 		return _gravityAreas.Last().GetGravityDirection(this).normalized;
 	}
@@ -127,3 +130,105 @@ private void OnTriggerExit(Collider other)
 	}
 }
 ```
+
+### GravityAreaCenter
+
+Used for things like planets and were you want to go around a object.
+
+```csharp
+public class GravityAreaCenter : GravityArea
+{
+	public override Vector3 GetGravityDirection(GravityBody _gravityBody)
+	{
+		return (transform.position - _gravityBody.transform.position).normalized;
+	}
+}
+```
+
+Calculates the GetGravityDirection by taking the gravitybodys position away from whatever this script is on.
+
+### GravityAreaInversePoint
+
+Where you are attracted to a single point that is defined by the transform
+
+```csharp
+public class GravityAreaInversePoint : GravityArea
+{
+[SerializeField] private Vector3 _center;
+
+	public override Vector3 GetGravityDirection(GravityBody _gravityBody)
+	{
+		return (_gravityBody.transform.position - _center).normalized;
+	}
+}
+```
+
+Calculates the GetGravityDirection by taking the _center position away from where the gravityBody is. 
+
+### GravityAreaInversePoint
+
+Where you are pushed away from a single point that is defined by the transform
+
+```csharp
+public class GravityAreaPoint : GravityArea
+{
+[SerializeField] private Vector3 _center;
+
+	public override Vector3 GetGravityDirection(GravityBody _gravityBody)
+	{
+		return (_center - _gravityBody.transform.position).normalized;
+	}
+}
+```
+
+Calculates the GetGravityDirection by taking the gravitybodys position away from the _center position. Meaning it will push the player away from the _center.
+
+### GravityAreaUp
+
+Works like normal gravity where you are attracted down
+
+```csharp
+public class GravityAreaUp : GravityArea
+{
+	public override Vector3 GetGravityDirection(GravityBody _gravityBody)
+	{
+		return -transform.up;
+	}
+}
+```
+
+Sets the gravity to the opposite of the objects up position.
+
+---
+
+### Setting up the GameObjects
+
+First you need add a sphere game object into the hierarchy the name it Planet and then right click on that object and do the same again, but not is gravity area.
+
+![Untitled](Images/Custom%20Gravity/Untitled.png)
+
+Set the childs transform scale to 1.5 for the X, Y, Z so its slightly larger then the parent, and remove the mesh renderer of the child gameObject as well. Then on the parent set the scale to 10 on the X, Y, Z (Or how ever large you want it to be). So when you select the parent sphere it looks something like this in the scene.
+
+![Untitled](Images/Custom%20Gravity/Untitled%201.png)
+
+On the gameobject Gravity Area add the component GravityAreaCenter to it.
+
+![Untitled](Images/Custom%20Gravity/Untitled%202.png)
+
+Next we just need to create a new gameobject that we will test out this new gravity system on. So we will create a cube the same way we made the sphere and position it so its just above the sphere
+
+![Untitled](Images/Custom%20Gravity/Untitled%203.png)
+
+On the cube we are going to add the gravitybody component that we created earlier, which will interact with the gravity area which we just made, and also add a rigidbody. 
+
+On the rigidbody set the following:
+
+Drag = 0.5
+
+Angular Drag = 5
+
+Collision Detection = Continuous
+
+But for this to work we need to turn off gravity in the project. For that go to Edit > Project Settings > Physics, then make sure gravity is 0, and cloth gravity is also 0 (if you still want gravity but only want certain object to interact with the new gravity you can leave that how it is, but just turn gravity off per rigidbody).
+
+Now when you click play, you should see the cube fall towards the planet, and if you try to move it, it will go back to the planet and realign itself as well.
