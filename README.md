@@ -10,10 +10,10 @@ A repository with tutorials on different systems in unity
 - Etc
 
 
-## [Basic Dialogue System](Tutorials/BasicDialogueSystem.md)
+## [Basic Dialogue System](Tutorials/BasicDialogueSystem.md) - TODO
 - Enter a area and dialogue is show for that character.
 
-## [Custom Editor](Tutorials/InventorySystem.md)
+## [Custom Editor](Tutorials/InventorySystem.md) - TODO
 - Custom editors for your scripts
 
 ## [Player Controller](Tutorials/PlayerController.md)
