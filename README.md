@@ -13,7 +13,7 @@ A repository with tutorials on different systems in unity
 ## [Basic Dialogue System](Tutorials/BasicDialogueSystem.md)
 - Enter a area and dialogue is show for that character.
 
-## [Custom Editor](Tutorials/CustomEditor.md) - TODO
+## [Custom Editor](Tutorials/CustomEditor.md)
 - Custom editors for your scripts
 
 ## [Player Controller](Tutorials/PlayerController.md)
