@@ -110,7 +110,7 @@ CharacterName.text = Set.Lines[_currentSpeaker].Speaker;
 Dialogue.text = Set.Lines[_currentSpeaker].Dialogue[_currentDialogue];
 ```
 
-The next one we will do is the EndDialogue function as all this needs to do is set the current speaker back to 0, as one is speaking, and the same with the dialogue. We then need to disable the GameObject.
+The next one we will do is the EndNarration function as all this needs to do is set the current speaker back to 0, as one is speaking, and the same with the dialogue. We then need to disable the GameObject.
 
 ```csharp
 _currentDialogue = 0;
@@ -137,3 +137,23 @@ if (Set.Lines.Length <= _currentSpeaker)
 CharacterName.text = Set.Lines[_currentSpeaker].Speaker;
 Dialogue.text = Set.Lines[_currentSpeaker].Dialogue[_currentDialogue];
 ```
+
+### Setting up GameObjects
+
+Add the Narration manager to the player game object that you have made, for this example i have put it on a basic cube.
+
+On the game object you want to speak, add a canvas as a child that has a name and dialogue text component, then deactivate the canvas. On the gameobject add a sphere collider and make sure its large enough for the player to walk into range of, and add the narration body script.
+
+![Untitled](Images/Dialogue%20System/Untitled.png)
+
+We then need to drag the relative gameobjects into the right fields, so when the player triggers the dialogue it displays correctly.
+
+Where it says set, we need to create some scriptable objects in the assets folder. We first need to create a Narration line, and fill out the text fields, for my example the speakers name is Bob, and all he says is “Hey”, “How you doing?”. 
+
+![Untitled](Images/Dialogue%20System/Untitled%201.png)
+
+Which we then need to create a Narration set, and just drag the narration line we just created into that scriptable object.
+
+![Untitled](Images/Dialogue%20System/Untitled%202.png)
+
+Then drag that scriptable object back into the set field on the narration body. Now when your player goes into that area, the dialogue should appear above the characters head, and when you press space is should loop through their lines.
